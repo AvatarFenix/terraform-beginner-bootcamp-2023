@@ -187,3 +187,5 @@ If succesfull you should see a json payload return that looks like this:
 
 ```
 [AWS CLI Env Vars](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-envvars.html)
+
+We'll need to generate AWS CLI credentials from IAM User in order to use the AWS CLI.
