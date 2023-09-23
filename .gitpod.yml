@@ -5,7 +5,8 @@ tasks:
   - name: aws-cli
     env:
       AWS_CLI_AUTO_PROMPT: on-partial
-    init: |
+    before: |
+      source ./bin/install_aws_cli
 
 vscode:
   extensions:
