@@ -155,6 +155,7 @@ We can persist env vars in Gitpod by storing them in Gitpod Secrets Sorage.
 
 ```
 gp env HELLO='world'
+
 ```
 
 - All future workspaces launched will set the env vars for all bash terminals opened in those worskapces.
