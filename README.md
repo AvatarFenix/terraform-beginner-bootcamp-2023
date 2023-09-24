@@ -266,3 +266,53 @@ Terraform logs information about the resources it has created in a state file. T
 ### Terraform Directory
 
 `.terraform` directory contains binaries of Terraform providers.
+
+#### Migrate state file to cloud
+
+To migrate the state file to Terraform Cloud we need to edit the main.tf file and add the following code
+
+```json
+  cloud {
+    organization = "ORGANIZATION-NAME"
+    workspaces {
+      name = "learn-terraform-cloud-migrate"
+    }
+```
+
+[Cloud Migrate](https://developer.hashicorp.com/terraform/tutorials/cloud/cloud-migrate)
+
+#### Issues with Terraform Cloud Login and Gitpod Workspace
+
+When attempting to run a `terraform login` it will launch bash a wiswig view to generate a token. However it does not work as expected in Gitpod VSCode.
+
+The workaround is manually generate a tokn in Terraform Cloud
+
+[Log in to Terraform Cloud from the CLI](ttps://developer.hashicorp.com/terraform/tutorials/cloud-get-started/cloud-login)
+
+```
+https://app.terraform.io/app/settings/tokens?source=terraform-login
+
+```
+
+Then create the file manually here:
+
+```
+touch /home/gitpod/.terraform.d/credentials.tfrc.json
+open /home/gitpod/.terraform.d/credentials.tfrc.json
+
+```
+Provide the follwing code  (replace token on file)
+
+[File credentials.tfrc.json content ](https://www.reddit.com/r/Terraform/comments/rtl5ey/can_anyone_please_show_me_show_me_how/)
+
+```json
+{
+  "credentials": {
+    "app.terraform.io": {
+      "token": "token"
+    }
+  }
+}
+
+```
+
