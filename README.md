@@ -301,7 +301,7 @@ touch /home/gitpod/.terraform.d/credentials.tfrc.json
 open /home/gitpod/.terraform.d/credentials.tfrc.json
 
 ```
-Provide the follwing code  (replace token on file)
+Provide the following code  (replace token on file)
 
 [File credentials.tfrc.json content ](https://www.reddit.com/r/Terraform/comments/rtl5ey/can_anyone_please_show_me_show_me_how/)
 
@@ -316,3 +316,4 @@ Provide the follwing code  (replace token on file)
 
 ```
 
+We have automated this workaround with the following bash script [bin/generate_tfrc_credentials](bin/generate_tfrc_credentials)
