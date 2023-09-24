@@ -189,3 +189,73 @@ If succesfull you should see a json payload return that looks like this:
 [AWS CLI Env Vars](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-envvars.html)
 
 We'll need to generate AWS CLI credentials from IAM User in order to use the AWS CLI.
+
+## Terraforms Basics
+
+### Terraform Registry
+
+Terraform sources thier providers and modules for the Terraform regisdtry which is located at 
+[registry.terraform.io](https://registry.terraform.io/)
+
+The Terraform Registry is the main directory of publicly available Terraform providers, and hosts providers for most major infrastructure platforms.
+
+The Terraform Registry includes documentation for a wide range of providers developed by HashiCorp, third-party vendors, and our Terraform community
+
+- **Providers** in Terraform is a plugin that enables interaction with an API. This includes Cloud providers and Software-as-a-service providers. The providers are specified in the Terraform configuration code. They tell Terraform which services it needs to interact with.
+
+Terraform configurations must declare which providers they require so that Terraform can install and use them. Additionally, some providers require configuration (like endpoint URLs or cloud regions) before they can be used.
+
+[Random Terraform Provider](https://registry.terraform.io/providers/hashicorp/random/latest)
+
+- **Modules** are containers for multiple resources that are used together. A module consists of a collection of .tf and/or .tf.json files kept together in a directory.
+Modules are the main way to package and reuse resource configurations with Terraform.
+
+Every Terraform configuration has at least one module, known as its root module, which consists of the resources defined in the .tf files in the main working directory.
+
+
+### Terraform Console
+
+We can see a list of all the Terraform commands by simply typing `terraform` in the terminal console.
+
+#### Terraform Init
+
+At the start of a new Terrafom project we will run `terraform init` to download the binaries fopr the Terrafom providers that we'll use in this project.
+
+#### Terraform Plan
+
+`terraform plan`
+
+This will generate out a changeset about the state of our infrastructure and what will be changed.
+
+We can output this changeset ie. "plan" to be passed to an apply, but often you can just ignore outputting.
+
+#### Terraform Apply
+
+`terraform apply`
+
+This will run a plan and pass the changeset to be executed by Terraform. Apply should prompt us yes or no .
+If we want to automatically approve an apply we can provide the auto approve flag eg. `terraform apply --auto-approve`
+
+## Terraform Lock Files
+
+`.terraform.lock.hcl` contains the locked versioning for the proviers or modules that should be used with this project.
+
+The Terraform Lock File **should be commited** to your Version Control System (VCS) eg. Github
+
+Terraform 0.14 and later utilize a lock file to enable teams to standardize on specific, approved, verified versions of provider plugins. The lock file is essential for Terraform's operation and so will always be generated if one does not exist, even if it is not retained or distributed.
+
+## Terraform State Files 
+
+`.terraform.tfstate` contains information about the current state of your infrastructure.
+
+The Terraform Sate File Lock File **should NOT be commited** to your Version Control System (VCS) eg. Github
+
+This file can contain sensitive information. If you loose this file you lose knowing the state of your infrastructure.
+
+`.terraform.tfstate.backup` is the previous state file state.
+
+Terraform logs information about the resources it has created in a state file. This enables Terraform to know which resources are under its control and when to update and destroy them. The terraform state file, by default, is named terraform.
+
+### Terraform Directory
+
+`.terraform` directory contains binaries of Terraform providers.
