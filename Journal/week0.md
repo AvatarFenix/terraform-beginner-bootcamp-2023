@@ -94,7 +94,7 @@ and the special mode flags (the setuid, setgid, and sticky flags) of file system
 
 
 
-### GitHub Lifecycle (Before, Init, Command)
+### GitHub Lifecycle Before, Init, Command
 
 When you restart a workspace, Gitpod already executed the init task either as part of a Prebuild or when you started the workspace for the first time.
 
