@@ -15,5 +15,4 @@ PROJECT_ROOT
 └── README.md               # required for root modules
 ```
 
-
 [Standard Module Structure](https://developer.hashicorp.com/terraform/language/modules/develop/structure)
